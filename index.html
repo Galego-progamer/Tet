@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #messages { height: 300px; overflow-y: scroll; border: 1px solid black; padding: 10px; }
+        #chat { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Chat</h1>
+
+    <div id="login">
+        <input id="username" type="text" placeholder="Digite seu nome">
+        <button onclick="enterChat()">Entrar</button>
+    </div>
+
+    <div id="chat">
+        <div id="messages"></div>
+        <input id="msg" type="text" placeholder="Digite sua mensagem">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <script>
+        var socket = io.connect("http://" + document.domain + ":5000");
+        var username = "";
+
+        function enterChat() {
+            username = document.getElementById("username").value.trim();
+            if (username === "") {
+                alert("Digite um nome!");
+                return;
+            }
+            document.getElementById("login").style.display = "none";
+            document.getElementById("chat").style.display = "block";
+        }
+
+        socket.on("message", function(msg) {
+            let div = document.createElement("div");
+            div.innerText = msg;
+            document.getElementById("messages").appendChild(div);
+        });
+
+        function sendMessage() {
+            var msg = document.getElementById("msg").value;
+            if (msg.trim() !== "") {
+                socket.send(username + ": " + msg);
+                document.getElementById("msg").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
