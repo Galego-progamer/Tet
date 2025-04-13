@@ -1,57 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #messages { height: 300px; overflow-y: scroll; border: 1px solid black; padding: 10px; }
-        #chat { display: none; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Pedido de Passe de Elite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    textarea, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <h1>Chat</h1>
+  <div class="container">
+    <h2>Faça seu pedido</h2>
+    <p><strong>Produtos disponíveis:</strong></p>
+    <ul>
+      <li>Passe de Elite</li>
+      <li>Diamantes</li>
+      <li>Conta nível alto</li>
+    </ul>
 
-    <div id="login">
-        <input id="username" type="text" placeholder="Digite seu nome">
-        <button onclick="enterChat()">Entrar</button>
-    </div>
+    <form action="https://formsubmit.co/fc9670473@gmail.com" method="POST">
+      <!-- Proteção contra bots -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Novo pedido do site!">
+      <input type="hidden" name="_template" value="table">
 
-    <div id="chat">
-        <div id="messages"></div>
-        <input id="msg" type="text" placeholder="Digite sua mensagem">
-        <button onclick="sendMessage()">Enviar</button>
-    </div>
+      <label for="pedido">Escreva seu pedido:</label>
+      <textarea name="Pedido" required></textarea>
 
-    <script>
-        var socket = io.connect("http://" + document.domain + ":5000");
-        var username = "";
+      <label for="contato"> WhatsApp ou email:</label>
+      <input type="text" name="Contato" required>
 
-        function enterChat() {
-            username = document.getElementById("username").value.trim();
-            if (username === "") {
-                alert("Digite um nome!");
-                return;
-            }
-            document.getElementById("login").style.display = "none";
-            document.getElementById("chat").style.display = "block";
-        }
-
-        socket.on("message", function(msg) {
-            let div = document.createElement("div");
-            div.innerText = msg;
-            document.getElementById("messages").appendChild(div);
-        });
-
-        function sendMessage() {
-            var msg = document.getElementById("msg").value;
-            if (msg.trim() !== "") {
-                socket.send(username + ": " + msg);
-                document.getElementById("msg").value = "";
-            }
-        }
-    </script>
+      <button type="submit">Enviar Pedido</button>
+    </form>
+  </div>
 </body>
 </html>
