@@ -1,64 +1,201 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Pedido de Passe de Elite</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja Militar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyanLight: '#67e8f9'
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      padding: 20px;
+    @keyframes rgbText {
+      0% { color: red; }
+      25% { color: black; }
+      50% { color: purple; }
+      75% { color: brown; }
+      100% { color: orange; }
     }
-    .container {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    textarea, input, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
+
+    .rgb-animation {
+      animation: rgbText 4s linear infinite;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h2>Faça seu pedido</h2>
-    <p><strong>Produtos disponíveis:</strong></p>
-    <ul>
-      <li>Passe de Elite</li>
-      <li>Diamantes</li>
-      <li>Conta nível alto</li>
-    </ul>
+<body class="bg-black text-white">
 
-    <form action="https://formsubmit.co/fc9670473@gmail.com" method="POST">
-      <!-- Proteção contra bots -->
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="Novo pedido do site!">
-      <input type="hidden" name="_template" value="table">
-
-      <label for="pedido">Escreva seu pedido:</label>
-      <textarea name="Pedido" required></textarea>
-
-      <label for="contato"> WhatsApp ou email:</label>
-      <input type="text" name="Contato" required>
-
-      <button type="submit">Enviar Pedido</button>
-    </form>
+  <div id="banner">
+    <img src="https://i.postimg.cc/JzVDMgKb/1092971765-95398894988375-1748129470058.png" alt="Banner" />
   </div>
+
+  <header class="bg-cyanLight p-5 text-center text-3xl font-bold">
+    <span class="rgb-animation">[MV] Vendas</span>
+  </header>
+
+  <main class="p-6 space-y-12">
+
+    <!-- Categorias com produtos -->
+
+    <!-- Alto Escalão -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Alto Escalão</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight">
+          <h3 class="text-xl font-bold text-cyanLight">[CMDT] Comandante</h3>
+          <p>Cargo supremo. R$ 50.45</p>
+          <button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button>
+        </div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight">
+          <h3 class="text-xl font-bold text-cyanLight">[SUB-CMD] Sub Comandante</h3>
+          <p>Segundo no comando. R$ 34.45</p>
+          <button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Oficiais Generais -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Oficiais Generais</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[GEN-E] General de Exército R$ 20.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[GEN-D] General de Divisão  R$ 18.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[GEN-B] General de Brigada R$ 17.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+      </div>
+    </section>
+
+    <!-- Oficiais Superiores -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Oficiais Superiores</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[CEL] Coronel  R$ 16.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[TEN-CEL] Tenente Coronel R$ 15.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[MAJ] Major R$ 14.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+      </div>
+    </section>
+
+    <!-- Oficiais Intermediários -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Oficiais Intermediários</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[CAP] Capitão R$ 12.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+      </div>
+    </section>
+
+    <!-- Oficiais Subalternos -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Oficiais Subalternos</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[P-TEN] Primeiro Tenente R$ 9.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[S-TEN] Segundo Tenente R$ 8.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[ASP] Aspirante a Oficial R$ 7.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+      </div>
+    </section>
+
+    <!-- Graduados -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Graduados</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[SUB-TNT] Sub Tenente R$ 6.45</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[P-SGT] Primeiro Sargento R$ 6.23</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[S-SGT] Segundo Sargento R$ 6.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[T-SGT] Terceiro Sargento R$ 5.01</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+      </div>
+    </section>
+
+    <!-- Praças -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Praças</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[CB] Cabo R$ 10.30</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[SD] Soldado R$ 11.10</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">[REC] Recruta R$ 12.43</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+      </div>
+    </section>
+
+    <!-- Outros Produtos -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Extras e Benefícios</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Nitro 1 mês R$ 2.50</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Nitro Gaming R$ 2.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Nitro Gif R$ 10.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+         
+    </section>
+
+    <!-- Outros Produtos -->
+    <section>
+      <h2 class="text-2xl font-semibold border-b-2 border-cyanLight mb-4">Mais produtos</h2>
+      <div class="flex gap-4 overflow-x-auto pb-2">
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Boost No Server  R$ 8.90</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Familias R$ 10.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+        
+<div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Staff Aprendiz R$ 16.70</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+       <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Staff  R$ 16.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+       <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Staff Direitor R$ 15.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+       <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Coordenador R$ 14.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div>
+       <div class="min-w-[250px] bg-gray-800 p-4 rounded-xl border border-cyanLight"><h3 class="text-xl font-bold text-cyanLight">Coordenador Direitor R$ 13.00</h3><button onclick="abrirCompra()" class="bg-cyanLight text-black mt-2 px-4 py-2 rounded-2xl font-semibold shadow-md hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ease-in-out">Comprar</button></div
+      </div>
+      
+  </main><!-- Botão para abrir -->
+<button onclick="abrirFeedbacks()" style="padding: 10px 20px; background-color: #1a1a1a; color: #00ffcc; border: none; border-radius: 5px; cursor: pointer;">
+  Ver Feedbacks
+</button>
+
+<!-- Caixa de Feedbacks -->
+<div id="feedbackBox" style="display: none; background-color: #121212; padding: 20px; border: 2px solid #00ffcc; margin-top: 15px; border-radius: 10px; color: #f5f5f5;">
+  <h2>Feedbacks dos Clientes</h2>
+  
+  <div class="feedback" style="background-color: #1e1e1e; padding: 10px; border-left: 5px solid #00ffcc; margin-bottom: 10px; border-radius: 5px;">
+    <p>"Em Breve!"</p>
+    <span>- Em Breve</span>
+  </div>
+
+  <!-- Botão para fechar -->
+  <button onclick="fecharFeedbacks()" style="padding: 10px 20px; background-color: #1a1a1a; color: #00ffcc; border: none; border-radius: 5px; cursor: pointer;">
+    Fechar
+  </button>
+</div>
+
+<!-- Script para mostrar/ocultar -->
+<script>
+  function abrirFeedbacks() {
+    document.getElementById("feedbackBox").style.display = "block";
+  }
+
+  function fecharFeedbacks() {
+    document.getElementById("feedbackBox").style.display = "none";
+  }
+</script>
+  <!-- MODAL -->
+  <div id="modalCompra" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-white text-black p-6 rounded-xl max-w-md text-center space-y-4">
+      <h2 class="text-2xl font-bold">Pagamento via PIX</h2>
+      <p class="bg-gray-200 p-2 rounded text-sm break-all">Chave PIX: <strong>8205da3e-9351-4df4-be27-a078e880d8dd</strong></p>
+      <a href="https://discord.gg/ebdocael" target="_blank" class="inline-block bg-cyanLight text-black px-6 py-2 rounded-full font-semibold hover:bg-cyan-300 transition">Entrar no Discord</a>
+      <p class="text-sm text-gray-700">Após o pagamento, abra um ticket no Discord e envie o comprovante para receber seu produto.</p>
+      <button onclick="fecharCompra()" class="mt-2 px-4 py-1 text-sm text-gray-600 hover:text-red-600">Fechar</button>
+    </div>
+  </div>
+
+  <footer class="text-center p-4 bg-cyanLight text-gray-900 mt-10">
+    © 2025 [MV] Vendas. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function abrirCompra() {
+      document.getElementById('modalCompra').classList.remove('hidden');
+    }
+    function fecharCompra() {
+      document.getElementById('modalCompra').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
